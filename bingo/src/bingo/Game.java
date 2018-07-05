@@ -6,7 +6,7 @@ public class Game {
 	private ArrayList<Card> cards;
 	private ArrayList<Integer> store; // Werte, die noch dran kommen können
 	
-	int playercount;
+	int playercount; // anzahl der Spieler
 	
 	public Game(int playerc) {
 		start = true;
@@ -21,6 +21,7 @@ public class Game {
 		}
 	}
 	public int generate() {
+		// generiert eine Zufallszahl von 1 bis 100
 		int index = (int)(Math.random() * store.size());
 		int output = store.get(index);
 		store.remove(index);
@@ -39,6 +40,7 @@ public class Game {
 	}
 	
 	public void input_ki() {
+		// erzeugt das Blatt der KI-Mitspieler
 		for (int i = 1; i<10;i++) {
 			int j = (int)(Math.random() * 100 + 1);
 			cards.get(1).add_val(((i-1)/3), (i-1)%3, j);
@@ -46,6 +48,7 @@ public class Game {
 	}
 	
 	public void update_cards(int val) {
+		// Zustand des Blatts der Spieler wird geupdatet (es werden Werte herausgestrichen, die genannt wurden)
 		for (Card c: cards) {
 			c.update_val(val);
 		}
@@ -62,6 +65,7 @@ public class Game {
 	}
 	
 	public void run() {
+		// Initialisiert das Spiel und Steuert in einer Endlosschleife das Spielgeschehen
 		input_player();
 		input_ki();
 		while (start) {

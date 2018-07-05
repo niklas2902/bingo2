@@ -4,17 +4,21 @@ import java.util.*;
 public class Game {
 	private boolean start;
 	private ArrayList<Card> cards;
-	private ArrayList<Integer> store; // Werte, die ncoh dran kommen können
+	private ArrayList<Integer> store; // Werte, die noch dran kommen können
 	
+	int playercount;
 	
 	public Game(int playerc) {
 		start = true;
 		cards = new ArrayList<Card>();
 		store = new ArrayList<Integer>();
+		playercount = playerc;
 		for (int i = 0; i < 100; i++) {
 			store.add(i+1);
 		}
-		cards.add(new Card());
+		for(int j = 0; j < playerc; j++) {
+			cards.add(new Card());
+		}
 	}
 	public int generate() {
 		int index = (int)(Math.random() * store.size());
@@ -32,6 +36,13 @@ public class Game {
 			cards.get(0).add_val(((i-1)/3), (i-1)%3, j);
 		}
 		
+	}
+	
+	public void input_ki() {
+		for (int i = 1; i<10;i++) {
+			int j = (int)(Math.random() * 100 + 1);
+			cards.get(1).add_val(((i-1)/3), (i-1)%3, j);
+		}
 	}
 	
 	public void update_cards(int val) {
@@ -52,13 +63,19 @@ public class Game {
 	
 	public void run() {
 		input_player();
+		input_ki();
 		while (start) {
 			
 			int numb = generate();
 			update_cards(numb);
 			System.out.println("Zahl: " + numb);
-			start = !win();
-			cards.get(0).output_test();
+			for(int i = 0; i < playercount; i++) {
+				cards.get(i).output_test();
+				System.out.println();
+			}
+			if(start == win()) {
+				return;
+			}
 		}
 		
 	}

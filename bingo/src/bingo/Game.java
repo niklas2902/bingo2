@@ -78,6 +78,16 @@ public class Game {
 			}
 			if(start == win()) {
 				start = false;
+				if(cards.get(0).check_win() == true) {
+					System.out.println("Der Spieler hat gewonnen!!!");
+				} else {
+					System.out.println("Die KI hat leider gewonnen.");
+				}
+			}
+			try {
+				Thread.sleep(200);
+			} catch (InterruptedException e) {
+				e.printStackTrace();
 			}
 		}
 		

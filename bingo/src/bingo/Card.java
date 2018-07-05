@@ -1,5 +1,5 @@
 package bingo;
-// Test Commit
+// Test Commit2
 public class Card {
 	int[][] data;
 	int SIZE;

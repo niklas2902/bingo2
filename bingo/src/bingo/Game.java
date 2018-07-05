@@ -39,9 +39,11 @@ public class Game {
 	}
 	
 	public void input_ki() {
-		for (int i = 1; i<10;i++) {
-			int j = (int)(Math.random() * 100 + 1);
-			cards.get(1).add_val(((i-1)/3), (i-1)%3, j);
+		for(int k = 1; k < playercount; k++) {
+			for (int i = 1; i<10;i++) {
+				int j = (int)(Math.random() * 100 + 1);
+				cards.get(k).add_val(((i-1)/3), (i-1)%3, j);
+			}
 		}
 	}
 	

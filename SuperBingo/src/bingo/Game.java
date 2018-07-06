@@ -48,16 +48,18 @@ public class Game {
 		ArrayList<Integer>nums; // hier werden die Zahlen generiert, um zu verhindern, dass Zahlen doppelt gewählt werden
 		for(int k = 1; k < playercount; k++) {
 			nums = new ArrayList();
+			int ran;
 			for (int i = 0; i<100;i++) {
 				nums.add(i+1);
 			}
 			for (int i = 1; i<10;i++) {
+				ran = (int)(Math.random() * nums.size());
 				int j = nums.get((int)(Math.random() * nums.size()));
 				cards.get(k).add_val(((i-1)/3), (i-1)%3, j);
-				nums.remove(j);
+				nums.remove(ran);
 			}
 		}
-	}
+}
 	
 	public void update_cards(int val) {
 		for (Card c: cards) {
@@ -83,7 +85,8 @@ public class Game {
 		input_ki();
 		for(int i = 0; i < cards.size(); i++) {
 			if(cards.get(i).check_cheat()) {
-				System.out.println("Ein Betrüger ist unter euch!!! " + cards.get(i).get_playern() + "spielt nicht fair");
+				System.out.println("Ein Betrüger ist unter euch!!! " + cards.get(i).get_playern() + " spielt nicht fair");
+				start = false;
 			}
 		}
 		while (start) {

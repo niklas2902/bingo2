@@ -48,13 +48,15 @@ public class Game {
 		ArrayList<Integer>nums; // hier werden die Zahlen generiert, um zu verhindern, dass Zahlen doppelt gewählt werden
 		for(int k = 1; k < playercount; k++) {
 			nums = new ArrayList();
+			int ran;
 			for (int i = 0; i<100;i++) {
 				nums.add(i+1);
 			}
 			for (int i = 1; i<10;i++) {
+				ran = (int)(Math.random() * nums.size());
 				int j = nums.get((int)(Math.random() * nums.size()));
 				cards.get(k).add_val(((i-1)/3), (i-1)%3, j);
-				nums.remove(j);
+				nums.remove(ran);
 			}
 		}
 	}

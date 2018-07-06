@@ -3,9 +3,11 @@ package bingo;
 public class Card {
 	int[][] data;
 	int SIZE;
-	public Card(){
+	private String player_name;
+	public Card(String p_name){
 		SIZE = 3;
 		data = new int[SIZE][SIZE];
+		player_name = p_name;
 		
 	}
 	public void add_val(int x, int y, int val) {
@@ -45,6 +47,7 @@ public class Card {
 	}
 	
 	public void output_test() {
+		System.out.println(player_name);
 		for (int x = 0; x < SIZE;x++) {
 			for(int y = 0; y < SIZE; y++) {
 				System.out.print(data[x][y]+ ", "); 
@@ -53,5 +56,7 @@ public class Card {
 		}
 	}
 	
-
+	public String get_playern(){
+		return player_name;
+	}
 }

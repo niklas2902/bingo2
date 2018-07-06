@@ -17,7 +17,13 @@ public class Game {
 			store.add(i+1);
 		}
 		for(int j = 0; j < playerc; j++) {
-			cards.add(new Card());
+			if (j== 0) {
+				cards.add(new Card("Spieler"));
+			}
+			else {
+				cards.add(new Card("KI "+ j));
+			}
+			
 		}
 	}
 	public int generate() {
@@ -57,7 +63,7 @@ public class Game {
 		/* ArrayList cards durchlaufen, prüfen, ob ein Spieler gewonnen hat.*/
 		boolean win= false; 
 		for (Card c: cards) {
-			System.out.println(c.check_win());
+			//System.out.println(c.check_win());
 			win = c.check_win();
 			if(win == true) {
 				return win;
@@ -78,12 +84,24 @@ public class Game {
 				cards.get(i).output_test();
 				System.out.println();
 			}
+			System.out.println("-----------------------------------------------");
 			if(start == win()) {
 				start = false;
+				String winner_string = ""; // Ausgabe, welche KIs gewonnen haben
 				if(cards.get(0).check_win() == true) {
 					System.out.println("Der Spieler hat gewonnen!!!");
 				} else {
 					System.out.println("Die KI hat leider gewonnen.");
+					System.out.print("Gewinner ist: ");
+					for (int i = 0; i< cards.size();i++) {
+						if (cards.get(i).check_win()) {
+							if (winner_string != "") {
+								winner_string += ", ";
+							}
+							winner_string+=cards.get(i).get_playern();
+						}
+					}
+					System.out.println(winner_string);
 				}
 			}
 			try {
@@ -92,7 +110,5 @@ public class Game {
 				e.printStackTrace();
 			}
 		}
-		
 	}
-
 }

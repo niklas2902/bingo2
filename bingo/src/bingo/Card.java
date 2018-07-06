@@ -59,4 +59,15 @@ public class Card {
 	public String get_playern(){
 		return player_name;
 	}
+	
+	public boolean check_in(int val) {
+		for (int[] line: data) {
+			for (int y:line) {
+				if (y == val) {
+					return true;
+				}
+			}
+		}
+	return false;
+	}
 }

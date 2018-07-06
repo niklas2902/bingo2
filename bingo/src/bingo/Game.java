@@ -35,11 +35,16 @@ public class Game {
 	
 	public void input_player() {
 		/* Startphase, Karten werden erzeugt und gefüllt*/
-		for (int i = 1; i<10;i++) {
+		int i = 1;
+		while(i<10) {
 			Scanner ScIn= new Scanner(System.in);
 			System.out.print(i + ". Zahl: ");
 			int j=ScIn.nextInt();
+			if (cards.get(0).check_in(j)) {
+				continue;
+			}
 			cards.get(0).add_val(((i-1)/3), (i-1)%3, j);
+			i++;
 		}
 		
 	}

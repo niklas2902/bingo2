@@ -1,5 +1,5 @@
 package bingo;
-// Test Commit
+
 public class Card {
 	int[][] data;
 	int SIZE;
@@ -10,10 +10,11 @@ public class Card {
 		player_name = p_name;
 		
 	}
+	// Neuer Val
 	public void add_val(int x, int y, int val) {
 		data[x][y] = val;
 	}
-	
+	// Values werden geupdatet
 	public void update_val(int val) {
 		for (int x = 0; x < SIZE;x++) {
 			for (int y = 0; y < SIZE; y++) {
